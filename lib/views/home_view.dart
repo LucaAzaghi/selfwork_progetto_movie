@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:progetto_movie/viewmodels/movie_view_model.dart';
+import 'package:progetto_movie/views/components/movie_form_dialog.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget{
@@ -28,6 +29,12 @@ class HomeView extends StatelessWidget{
 
           return const Text('COMING SOON!!', style: TextStyle(fontSize: 50, color: Colors.red, fontWeight: FontWeight.bold));
         }
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(context: context, builder: (_) => MovieFormDialog());
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
