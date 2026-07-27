@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:progetto_movie/viewmodels/movie_view_model.dart';
 import 'package:progetto_movie/views/components/movie_form_dialog.dart';
+import 'package:progetto_movie/views/components/movie_list_widget.dart';
 import 'package:provider/provider.dart';
 
-class HomeView extends StatelessWidget{
+class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-        context.read<MovieViewModel>().fetchMovies();
-      }
-    );
+      context.read<MovieViewModel>().fetchMovies();
+    });
 
     return Scaffold(
       appBar: AppBar(title: Center(child: Text('Movie Collection APP'))),
@@ -23,12 +23,16 @@ class HomeView extends StatelessWidget{
 
           if (viewModel.movies.isEmpty) {
             return const Center(
-              child: Text('Non hai inserito nessun film', textAlign: TextAlign.center, style: TextStyle(fontSize: 25)),
+              child: Text(
+                'Non hai inserito nessun film',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 25),
+              ),
             );
           }
 
-          return const Text('COMING SOON!!', style: TextStyle(fontSize: 50, color: Colors.red, fontWeight: FontWeight.bold));
-        }
+          return MovieListWidget();
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -38,5 +42,4 @@ class HomeView extends StatelessWidget{
       ),
     );
   }
-  
 }
