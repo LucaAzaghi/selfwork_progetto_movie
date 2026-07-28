@@ -44,6 +44,7 @@ class _MovieFormDialogState extends State<MovieFormDialog> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       final newMovie = Movie(
+        id: widget.movie?.id,
         title: _titleController.text,
         duration: int.parse(_durationController.text),
         plot: _plotController.text,
